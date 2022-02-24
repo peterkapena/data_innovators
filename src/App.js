@@ -1,24 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { ThemeProvider } from "@emotion/react";
+import { Button, Paper } from "@mui/material";
+import { useSelector } from "react-redux";
+import NavBar from "./components/NavBar";
+import { BrowserRouter } from "react-router-dom";
 
 function App() {
+  const theme = useSelector((state) => state.theme);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme.theme}>
+      <Paper>
+        <BrowserRouter>
+          <NavBar></NavBar>
+          <Button variant="contained">Hello World</Button>
+        </BrowserRouter>
+      </Paper>
+    </ThemeProvider>
   );
 }
 
